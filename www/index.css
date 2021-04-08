@@ -1,7 +1,6 @@
 html,
 document,
 body {
-	background-color: #222;
 	color: green;
 	overflow: hidden;
 	transition: all 2s ease-in-out;
@@ -22,6 +21,21 @@ body {
 	pointer-events: none;
 }
 
+.logo {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 0;
+	background-image: url('/logo.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.9;
+}
 @keyframes dash {
 	to {
 		stroke-dashoffset: -100;
@@ -54,4 +68,30 @@ body {
 	/* webkit antialias fix */
 	-webkit-backface-visibility: hidden;
 	letter-spacing: 0.5px;
+}
+
+@font-face {
+	font-family: 'cartoon';
+	src: url('/cartoon.woff2') format('woff2'),
+		url('/cartoon.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-family: 'cartoon';
+	font-size: 5vh;
+
+	background-color: rgb(0, 106, 206) !important;
+	color: rgb(0, 225, 255);
+	text-shadow: -0.15rem -0.15rem 0 #000, 0.15rem -0.15rem 0 #000,
+		-0.15rem 0.15rem 0 #000, 0.15rem 0.15rem 0 #000;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	font-size: 6vh;
 }

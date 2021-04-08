@@ -6,8 +6,9 @@
 	"license": "Apache-2.0",
 	"description": "Deploy and build games to Steam / Itch using Electron and Greenworks with GitHub Actions",
 	"greenhub": {
-		"live": "app://index.html?live",
-		"dev": "app://index.html?dev"
+		"live": "https://goblin.life",
+		"dev": "https://goblin.life",
+		"openDirectoryOnSave": true
 	},
 	"scripts": {
 		"dev": "electron . --dev",
@@ -57,12 +58,12 @@
 	"devDependencies": {
 		"cordova": "^10.0.0",
 		"cordova-android": "^9.0.0",
-		"electron": "^11.1.1",
+		"electron": "^12.0.2",
 		"electron-builder": "^22.9.1"
 	},
 	"dependencies": {
-		"greenworks": "./electron/greenworks",
 		"electron-dl": "^3.0.2",
-		"electron-serve": "^1.1.0"
+		"electron-serve": "^1.1.0",
+		"greenworks": "./electron/greenworks"
 	}
 }

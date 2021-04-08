@@ -2,16 +2,18 @@ const { BrowserWindow, app, session } = require('electron')
 const serve = require('electron-serve')
 const electronDl = require('electron-dl')
 
-const { greenhub } = require('../package.json')
+const { greenhub, openDirectoryOnSave } = require('../package.json')
 
 electronDl({
-	directory: `${process.cwd()}/offline/saves`,
-	openFolderWhenDone: true,
+	directory: `${process.cwd()}/saves`,
+	openFolderWhenDone: openDirectoryOnSave,
 })
 
 const settings = require('./settings.js')
 
-const dev = process.argv.join('|').indexOf('dev') !== -1
+const args = process.argv.join('|')
+const dev = args.indexOf('dev') !== -1
+const steam = args.indexOf('steam') !== -1
 
 let win
 const root = serve({ directory: 'www' })
@@ -26,11 +28,12 @@ function Settings(windowName) {
 			windowState = settings.get(windowName)
 			return
 		}
+
 		// Default
 		windowState = {
 			x: undefined,
 			y: undefined,
-			width: 1000,
+			width: 1024,
 			height: 800,
 		}
 	}
@@ -86,6 +89,10 @@ function createWindow() {
 
 	mainWindowStateKeeper.track(win)
 
+	win.webContents.on('did-fail-load', () => {
+		win.loadURL('app://index.html')
+	})
+
 	win.loadURL(dev ? greenhub.dev : greenhub.live)
 }
 
@@ -97,8 +104,9 @@ app.on('window-all-closed', () => {
 	}
 })
 
-app.on('activate', () => {
-	if (BrowserWindow.getAllWindows().length === 0) {
-		createWindow()
-	}
-})
+// Steam!
+if (steam) {
+	const greenworks = require('./greenworks')
+
+	if (greenworks.init()) console.log('Steam API has been initalized.')
+}
