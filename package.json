@@ -1,10 +1,10 @@
 {
-	"name": "green-hub",
-	"version": "0.0.2",
+	"name": "goblin-life",
+	"version": "0.0.3",
 	"author": "A Goblin King <king@goblin.life> (https://goblin.life)",
 	"email": "king@goblin.life",
 	"license": "Apache-2.0",
-	"description": "Deploy and build games to Steam / Itch using Electron and Greenworks with GitHub Actions",
+	"description": "Imagination with Friends in 3D realms filled with adorable Goblins.",
 	"greenhub": {
 		"live": "https://goblin.life",
 		"dev": "https://goblin.life",
@@ -27,16 +27,15 @@
 			"category": "Game",
 			"target": [
 				"deb",
-				"rpm",
 				"freebsd"
 			]
 		},
 		"win": {
 			"fileAssociations": [
 				{
-					"ext": "hub",
-					"name": "Drag Onto GreenHub",
-					"description": "How Lucky! You found a GreenHub Binary! +5 to encumbrance ",
+					"ext": "dream",
+					"name": "Drag Onto Goblin.Life",
+					"description": "How Lucky! You found a Goblin.Life Binary! +5 to encumbrance ",
 					"role": "Editor",
 					"icon": "build/win.ico"
 				}
